@@ -10,6 +10,15 @@
     "lint": "eslint .",
     "build": "echo \"React Native does not use npm build, build done via Gradle/Xcode\""
   },
+  "scripts": {
+  "android": "react-native run-android",
+  "ios": "react-native run-ios",
+  "start": "react-native start",
+  "test": "jest --passWithNoTests",
+  "lint": "eslint .",
+  "build": "echo \"React Native does not use npm build, build done via Gradle/Xcode\""
+},
+
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.0",
     "@react-native-community/google-signin": "^4.0.3",
@@ -52,3 +61,4 @@
     "preset": "react-native"
   }
 }
+
