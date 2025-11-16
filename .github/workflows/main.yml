@@ -44,3 +44,4 @@ jobs:
 
       - name: Build Backend with Maven
         run: mvn clean package
+        working-directory: ./<YOUR_BACKEND_FOLDER>
