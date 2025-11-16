@@ -5,14 +5,42 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  frontend:
+    name: Frontend Check (React Native)
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm install
-      - run: npm run build
-      - run: npm test --if-present
+
+      - name: Install Node modules
+        run: npm install
+
+      # React Native does NOT have a real build command
+      - name: Run build script (safe)
+        run: npm run build --if-present
+
+      - name: Run tests
+        run: npm test --if-present
+
+  backend:
+    name: Backend Build (Java Maven)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Build Backend with Maven
+        run: mvn clean package
